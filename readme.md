@@ -5,7 +5,8 @@ A dataTables light columnFilter for jquery datatables 1.10 (server side processi
 
 ## To install
 ```bash
-bower install datatables-light-columnfilter
+npm install datatables-columnfilter
+yarn add datatables-columnfilter
 ```
 
 ## To configure
@@ -53,7 +54,7 @@ var columnConfig = {
    * @default text
    */
   type: (text|color|date|datetime|datetime-local|email|month|number|range|search|tel|time|url|week),
- 
+
   /**
    * time in ms
    * @use with "input" filter
@@ -61,7 +62,7 @@ var columnConfig = {
    * @default 200
    */
   time: 200,
-  
+
   /**
    * if the search is send to server to search like regular expression instead a plain text
    * @use with "input" filter
