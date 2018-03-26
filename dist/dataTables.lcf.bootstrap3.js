@@ -64,10 +64,10 @@
 
   // Define as an AMD module if possible
   if (typeof define === 'function' && define.amd) {
-    define(['jquery', 'datatables-light-columnfilter'], factory);
+    define(['jquery', 'datatables-columnfilter'], factory);
   } else if (typeof exports === 'object') {
     // Node/CommonJS
-    factory(require('jquery'), require('datatables-light-columnfilter'));
+    factory(require('jquery'), require('datatables-columnfilter'));
   } else if (jQuery) {
     // Otherwise simply initialise as normal, stopping multiple evaluation
     factory(jQuery, jQuery.fn.dataTable.ColumnFilter);
