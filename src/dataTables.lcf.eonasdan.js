@@ -15,27 +15,26 @@
         dom: function(th) {
           var self = this;
 
-          // Widget needs to be inside a relative positioned element
+          // Picker widgets need to be inside a relative-positioned element
           th.css('position', 'relative');
 
-          var picker = $('<input>', {type: self.options.type || 'text'});
-
+          var element = $('<input>', {type: self.options.type || 'text'});
           $.each(self.options.attr, function(key, value) {
-            picker.attr(key, value);
+            element.attr(key, value);
           });
 
-          self.startPicker = picker.clone().attr('placeholder', 'start');
-          self.endPicker = picker.clone().attr('placeholder', 'end');
+          self.startElement = element.clone();
+          $.each(self.options.startAttr, function(key, value) {
+            self.startElement.attr(key, value);
+          });
 
-          var pickerOptions = {
-            format: 'YYYY-MM-DD',
-            showClear: true,
-            showTodayButton: true,
-            useCurrent: false
-          };
+          self.endElement = element.clone();
+          $.each(self.options.endAttr, function(key, value) {
+            self.endElement.attr(key, value);
+          });
 
-          self.elements = self.startPicker.datetimepicker(pickerOptions)
-            .add(self.endPicker.datetimepicker(pickerOptions))
+          self.elements = self.startElement.datetimepicker(self.options.picker)
+            .add(self.endElement.datetimepicker(self.options.picker))
             .appendTo(th);
 
           return self.elements;
@@ -43,18 +42,19 @@
         bindEvents: function() {
           var self = this;
 
-          self.startPicker.on('dp.change', function() {
+          self.startElement.on('dp.change', function() {
             self.search();
           });
-          self.endPicker.on('dp.change', function() {
+          self.endElement.on('dp.change', function() {
             self.search();
           });
         },
         request: function() {
           var self = this;
 
-          return [self.startPicker.val(), self.endPicker.val()]
-            .join(self.options.separator);
+          return [
+            self.startElement.val(), self.endElement.val(),
+          ].join(self.options.separator);
         },
       }
     );
@@ -62,13 +62,20 @@
 
   // Define as an AMD module if possible
   if (typeof define === 'function' && define.amd) {
-    define(['jquery', 'datatables-columnfilter', 'eonasdan-bootstrap-datetimepicker'], factory);
+    define([
+      'jquery',
+      'datatables-columnfilter',
+      'eonasdan-bootstrap-datetimepicker',
+    ], factory);
   } else if (typeof exports === 'object') {
     // Node/CommonJS
-    factory(require('jquery'), require('datatables-columnfilter'), require('eonasdan-bootstrap-datetimepicker'));
+    factory(
+      require('jquery'),
+      require('datatables-columnfilter'),
+      require('eonasdan-bootstrap-datetimepicker')
+    );
   } else if (jQuery) {
     // Otherwise simply initialise as normal, stopping multiple evaluation
     factory(jQuery, jQuery.fn.dataTable.ColumnFilter);
   }
-
 })(window, document);
