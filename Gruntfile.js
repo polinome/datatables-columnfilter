@@ -24,7 +24,8 @@ module.exports = function (grunt) {
         files: {
           'dist/dataTables.lightColumnFilter.min.js': ['src/dataTables.lightColumnFilter.js'],
           'dist/dataTables.lcf.datepicker.fr.min.js': ['src/dataTables.lcf.datepicker.fr.js'],
-          'dist/dataTables.lcf.bootstrap3.min.js': ['src/dataTables.lcf.bootstrap3.js']
+          'dist/dataTables.lcf.bootstrap3.min.js': ['src/dataTables.lcf.bootstrap3.js'],
+          'dist/dataTables.lcf.eonasdan.min.js': ['src/dataTables.lcf.eonasdan.js'],
         }
       }
     },
@@ -40,7 +41,11 @@ module.exports = function (grunt) {
       datepicker: {
         src: 'src/dataTables.lcf.datepicker.fr.js',
         dest: 'dist/dataTables.lcf.datepicker.fr.js'
-      }
+      },
+      eonasdan: {
+        src: 'src/dataTables.lcf.eonasdan.js',
+        dest: 'dist/dataTables.lcf.eonasdan.js'
+      },
     }
   });
 
