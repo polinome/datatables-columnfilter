@@ -1,5 +1,5 @@
-# datatables-light-columnfilter
-A dataTables light columnFilter for jquery datatables 1.10 (server side processing only)
+# datatables-columnfilter
+A dataTables columnFilter for jquery datatables 1.10 (server side processing only)
 
 **Warning : this only works for server-side processing**
 
@@ -28,8 +28,6 @@ The main config is an associative object, the key being the column's index.
 - time
 - url
 - week
-
-The older type `dateRange` is @deprecated
 
 We now support the tags `select` and `input`, in order to work it is necessary to declare the `html` type in a new key-value pair called `html` in configuration object:
 
