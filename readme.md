@@ -6,6 +6,9 @@ A dataTables columnFilter for jquery datatables 1.10 (server side processing onl
 ## To install
 ```bash
 npm install datatables-columnfilter
+```
+or
+```bash
 yarn add datatables-columnfilter
 ```
 
